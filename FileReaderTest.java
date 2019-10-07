@@ -15,19 +15,28 @@ public class FileReaderTest{
             Scanner scanner = new Scanner(fr);
 
             String key;
-            String value;
+            Integer value;
+
+            int result = 0;
+
             while(scanner.hasNext()){
                 String word = scanner.nextLine();
                 String[] s = word.split(" ");
 
                 key = s[0];
-                value = s[1];
+                value = Integer.parseInt(s[1]);
                 
-                System.out.println(key + value);
-                
+                result += value;
+                score.put(key,value);
+
             }
+            System.out.println("----- 계산 결과 ------");
+            System.out.println("총점 : " + result);
+            double denominator = score.size();
+            System.out.println("평점 : " + result/denominator);
         }catch(IOException e){
             System.out.println("파일을 찾을 수 없습니다");
         }
+
     }
 }
